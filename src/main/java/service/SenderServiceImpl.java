@@ -19,8 +19,10 @@ public class SenderServiceImpl implements SenderService {
 
         Map<Integer, List<TeamReport>> allTeamReports = new HashMap<>();
 
-        // Делаем REST запрос Сервису-бухгалтеру и получаем ссылку на JSON
-        List<ServiceAccountantDTO> list = parserJSON.to_parse("reports.json", ServiceAccountantDTO[].class); // читаем данные из JSON файла
+        //String str = getJsonFromREST.getJsonFromREST();// Делаем REST запрос Сервису-бухгалтеру и получаем строку со всеми отчетами
+        String str = "[{\"id\":1891250097,\"date\":\"2022-03-10\",\"time\":15,\"task\":\"Some task\",\"userId\":1891250097},{\"id\":1891251865,\"date\":\"2022-03-10\",\"time\":15,\"task\":\"Some task\",\"userId\":1891251865},{\"id\":1891251996,\"date\":\"2022-03-10\",\"time\":15,\"task\":\"Some task\",\"userId\":1891251996},{\"id\":1891252096,\"date\":\"2022-03-10\",\"time\":15,\"task\":\"Some task\",\"userId\":1891252096},{\"id\":1891252193,\"date\":\"2022-03-10\",\"time\":15,\"task\":\"Some task\",\"userId\":1891252193},{\"id\":1891252271,\"date\":\"2022-03-10\",\"time\":15,\"task\":\"Some task\",\"userId\":1891252271},{\"id\":1891252362,\"date\":\"2022-03-10\",\"time\":15,\"task\":\"Some task\",\"userId\":1891252362},{\"id\":1891252448,\"date\":\"2022-03-10\",\"time\":15,\"task\":\"Some task\",\"userId\":1891252448},{\"id\":1891252555,\"date\":\"2022-03-10\",\"time\":15,\"task\":\"Some task\",\"userId\":1891252555},{\"id\":1891252631,\"date\":\"2022-03-10\",\"time\":15,\"task\":\"Some task\",\"userId\":1891252631}]"; //строка пример
+
+        List<ServiceAccountantDTO> list = parserJSON.to_parse(str, ServiceAccountantDTO[].class); // читаем данные из JSON файла
 
         for (ServiceAccountantDTO entity: list) {
             // По SOAP узнаем у Сервис-команды, используя "userId", информацию про того, кто сделал данный отчет
